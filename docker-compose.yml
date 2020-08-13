@@ -4,9 +4,8 @@ services:
     strong1:
         build: .
         volumes:
-            - ./1/ipsec.conf:/etc/ipsec.conf
             - ./1/init.sh:/etc/init.sh
-            - ./ipsec.secrets:/etc/ipsec.secrets
+            - ./1/swanctl.conf:/etc/swanctl/swanctl.conf
         networks:
             internet:
                 ipv4_address: 192.168.100.101
@@ -19,9 +18,8 @@ services:
     strong2:
         build: .
         volumes:
-            - ./2/ipsec.conf:/etc/ipsec.conf
             - ./2/init.sh:/etc/init.sh
-            - ./ipsec.secrets:/etc/ipsec.secrets
+            - ./2/swanctl.conf:/etc/swanctl/swanctl.conf
         networks:
             internet:
                 ipv4_address: 192.168.100.102
@@ -34,9 +32,8 @@ services:
     strong3:
         build: .
         volumes:
-            - ./3/ipsec.conf:/etc/ipsec.conf
             - ./3/init.sh:/etc/init.sh
-            - ./ipsec.secrets:/etc/ipsec.secrets
+            - ./3/swanctl.conf:/etc/swanctl/swanctl.conf
         networks:
             internet:
                 ipv4_address: 192.168.100.103

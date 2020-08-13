@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+    strong1:
+        build: .
+        volumes:
+            - ./1/ipsec.conf:/etc/ipsec.conf
+            - ./1/init.sh:/etc/init.sh
+            - ./ipsec.secrets:/etc/ipsec.secrets
+        networks:
+            internet:
+                ipv4_address: 192.168.100.101
+            strong1:
+                ipv4_address: 192.168.101.254
+        privileged: true
+        cap_add:
+            - NET_ADMIN
+
+    strong2:
+        build: .
+        volumes:
+            - ./2/ipsec.conf:/etc/ipsec.conf
+            - ./2/init.sh:/etc/init.sh
+            - ./ipsec.secrets:/etc/ipsec.secrets
+        networks:
+            internet:
+                ipv4_address: 192.168.100.102
+            strong2:
+                ipv4_address: 192.168.102.254
+        privileged: true
+        cap_add:
+        - NET_ADMIN
+
+    strong3:
+        build: .
+        volumes:
+            - ./3/ipsec.conf:/etc/ipsec.conf
+            - ./3/init.sh:/etc/init.sh
+            - ./ipsec.secrets:/etc/ipsec.secrets
+        networks:
+            internet:
+                ipv4_address: 192.168.100.103
+            strong3:
+                ipv4_address: 192.168.103.254
+        privileged: true
+        cap_add:
+        - NET_ADMIN
+
+networks:
+    internet:
+        ipam:
+            driver: default
+            config:
+              - subnet: 192.168.100.0/24
+    strong1:
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.101.0/24
+    strong2:
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.102.0/24
+    strong3:
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.103.0/24

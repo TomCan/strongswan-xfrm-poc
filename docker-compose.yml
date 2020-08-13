@@ -4,7 +4,9 @@ services:
     strong1:
         build: .
         volumes:
+            - ./charon.conf:/etc/strongswan.d/charon.conf
             - ./1/init.sh:/etc/init.sh
+            - ./1/updown.sh:/etc/updown.sh
             - ./1/swanctl.conf:/etc/swanctl/swanctl.conf
         networks:
             internet:
@@ -18,7 +20,9 @@ services:
     strong2:
         build: .
         volumes:
+            - ./charon.conf:/etc/strongswan.d/charon.conf
             - ./2/init.sh:/etc/init.sh
+            - ./2/updown.sh:/etc/updown.sh
             - ./2/swanctl.conf:/etc/swanctl/swanctl.conf
         networks:
             internet:
@@ -32,7 +36,9 @@ services:
     strong3:
         build: .
         volumes:
+            - ./charon.conf:/etc/strongswan.d/charon.conf
             - ./3/init.sh:/etc/init.sh
+            - ./3/updown.sh:/etc/updown.sh
             - ./3/swanctl.conf:/etc/swanctl/swanctl.conf
         networks:
             internet:
